@@ -1,37 +1,25 @@
 import unittest
 
-from roman_converter import roman_to_int
+from src.roman_converter import decimal_to_roman
 
 class TestRomanConverter(unittest.TestCase):
+    def test_basic_numbers(self):
+        self.assertEqual(decimal_to_roman(1), "I")
+        self.assertEqual(decimal_to_roman(5), "V")
+        self.assertEqual(decimal_to_roman(10), "X")
 
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("I"), 1)
-    
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("II"), 2)
+    def test_subtraction_rules(self):
+        self.assertEqual(decimal_to_roman(4), "IV")
+        self.assertEqual(decimal_to_roman(9), "IX")
+        self.assertEqual(decimal_to_roman(40), "XL")
+        self.assertEqual(decimal_to_roman(90), "XC")
 
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("III"), 3)
+    def test_complex_numbers(self):
+        self.assertEqual(decimal_to_roman(49), "XLIX")
+        self.assertEqual(decimal_to_roman(99), "XCIX")
+        self.assertEqual(decimal_to_roman(499), "CDXCIX")
+        self.assertEqual(decimal_to_roman(999), "CMXCIX")
+        self.assertEqual(decimal_to_roman(3999), "MMMCMXCIX")
 
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("IV"), 4)
-
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("V"), 5)
-
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("VI"), 6)
-
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("VII"), 7)
-
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("VIII"), 8)
-
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("IX"), 9)
-
-    def test_roman_to_int(self):
-        self.assertEqual(roman_to_int("X"), 10)
-
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
